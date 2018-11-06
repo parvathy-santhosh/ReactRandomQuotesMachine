@@ -13,14 +13,6 @@ class QuoteMachine extends Component {
     this.tweetQuote = this.tweetQuote.bind(this);
   }
   newQuote(){
-    console.log("Clicked new quote");
-  }
-  tweetQuote(){
-    let quote = this.state.text + ' - ' + this.state.author;
-    let url = 'https://twitter.com/intent/tweet?text=' + quote;
-    window.open(url, '_blank');
-  }
-  componentDidMount() {
     fetch("https://talaikis.com/api/quotes/random/")
       .then(res => res.json())
       .then(
@@ -38,6 +30,14 @@ class QuoteMachine extends Component {
           });
         }
       )
+  }
+  tweetQuote(){
+    let quote = this.state.text + ' - ' + this.state.author;
+    let url = 'https://twitter.com/intent/tweet?text=' + quote;
+    window.open(url, '_blank');
+  }
+  componentDidMount() {
+    this.newQuote();
   }
   render() {
     if (this.state.error) {

@@ -10,6 +10,7 @@ class App extends Component {
           <h1>Random Quotes Machine</h1>
           <hr className="hr"/>
           <QuoteMachine />
+          <hr className="hr" />
         </header>
       </div>
     );
