@@ -9,6 +9,16 @@ class QuoteMachine extends Component {
       text : '...',
       author: 'loading quote'
     };
+    this.newQuote = this.newQuote.bind(this);
+    this.tweetQuote = this.tweetQuote.bind(this);
+  }
+  newQuote(){
+    console.log("Clicked new quote");
+  }
+  tweetQuote(){
+    let quote = this.state.text + ' - ' + this.state.author;
+    let url = 'https://twitter.com/intent/tweet?text=' + quote;
+    window.open(url, '_blank');
   }
   componentDidMount() {
     fetch("https://talaikis.com/api/quotes/random/")
@@ -42,8 +52,8 @@ class QuoteMachine extends Component {
       <div id="quote-container">
       <h2 id="text">{this.state.text}</h2>
       <h3 id="author">{this.state.author}</h3>
-      <button id="new-quote" className="button">New Quote</button>
-      <button id="tweet-quote" className="button">Tweet Quote</button>
+      <button id="new-quote" className="button" onClick={this.newQuote}>New Quote</button>
+      <button id="tweet-quote" className="button" onClick={this.tweetQuote}>Tweet Quote</button>
       </div>
     );
   }
